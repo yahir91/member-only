@@ -1,0 +1,5 @@
+{
+  "name": "member-only",
+  "private": true,
+  "dependencies": {}
+}
