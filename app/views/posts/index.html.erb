@@ -7,6 +7,7 @@
     <tr>
       <th>Title</th>
       <th>Body</th>
+      <th>Author</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,6 +17,13 @@
       <tr>
         <td><%= post.title %></td>
         <td><%= post.body %></td>
+        <td>
+        
+        <% if member_signed_in? %>
+        <%= post.member.username %>
+        <% end %>
+        
+        </td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -26,7 +34,14 @@
 
 <br>
 
-<%= link_to 'New Post', new_post_path %>
-<%= link_to 'Login', new_post_path %>
-<%= link_to 'Sign Up', new_post_path%>
+
+
+<% if member_signed_in? %>
+  <%= link_to 'New Post', new_post_path %>
+  <%= link_to "Log out", destroy_member_session_path, method: :delete, :class => 'link' %>
+<% else %>
+  <%= link_to "Sign up", new_member_registration_path, :class => 'link' %>
+  <%= link_to "Log in", new_member_session_path, :class => 'link' %>
+<% end %>
+
 
