@@ -1,0 +1,14 @@
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.title %></td>
+        <td><%= post.body %></td>
+        <td>
+        <% if member_signed_in? %>
+          <%= post.member.username %>
+        <% end %>
+
+        </td>
+
+      </tr>
+    <% end %>
+  </tbody>
