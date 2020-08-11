@@ -11,7 +11,14 @@
 
   <body>
 
-
     <%= yield %>
+
+    <% if member_signed_in? %>
+  <%= link_to 'New Post', new_post_path %>
+  <%= link_to "Log out", destroy_member_session_path, method: :delete, :class => 'link' %>
+<% else %>
+  <%= link_to "Sign up", new_member_registration_path, :class => 'link' %>
+  <%= link_to "Log in", new_member_session_path, :class => 'link' %>
+<% end %>
   </body>
 </html>
