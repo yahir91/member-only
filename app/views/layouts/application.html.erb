@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MemberOnly</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <%= yield %>
+
+    <% if member_signed_in? %>
+      <%= link_to 'New Post', new_post_path %>
+      <span>|</span>
+      <%= link_to "Log out", destroy_member_session_path, method: :delete, :class => 'link' %>
+    <% else %>
+      <%= link_to "Sign up", new_member_registration_path, :class => 'link' %>
+      <span>|</span>
+      <%= link_to "Log in", new_member_session_path, :class => 'link' %>
+    <% end %>
+    
+  </body>
+</html>

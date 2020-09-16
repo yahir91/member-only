@@ -1,0 +1,13 @@
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.title %></td>
+        <td><%= post.body %></td>
+        <td>
+          
+          <%= logged_username(post.member.username) %> 
+
+        </td>
+
+      </tr>
+    <% end %>
+  </tbody>
